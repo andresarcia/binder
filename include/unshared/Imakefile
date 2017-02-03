@@ -1,0 +1,84 @@
+GRAPH_OPT= -rdynamic -L/usr/lib -L/usr/X11R6/lib
+
+#OPTIONS=        -D_REENTRANT DMESSAGES -DWITH_IMPLICIT_MSGS $(GRAPH_OPT) -DMEM_DEBUG
+OPTIONS=	-D_REENTRANT -O3 $(GRAPH_OPT) -DWITH_IMPLICIT_MSGS
+
+DEFINES=	$(OPTIONS) -Wall -Wtraditional \
+		-Wmissing-prototypes -Wmissing-declarations -Wcast-align
+
+# include "../srcDefs"
+
+LOCALLIBS=	$(TOP)/src/Binder/include/unshared/liblocator_deamon.a $(TOP)/src/Binder/include/unshared/libgenericServices.a $(TOP)/src/aleph/libipc.a $(TOP)/src/lib/libAleph.a  
+
+SYSLIBS=	-lnana -lstdc++ -lpthread -lc
+
+# -pg is to generate code suitable for the analysis program "gprof"
+
+GRAPH_LIB= -lgtkmm -lgdkmm -lgtk -lgdk -lgmodule -lglib -ldl -lXi -lXext -lX11 -lm -lsigc
+
+DEPLIBS= 	$(TOP)/src/lib/libAleph.a  
+
+DEAMON_LIBS =	 $(TOP)/src/Binder/include/unshared/libgenericServices.a $(TOP)/src/aleph/libipc.a $(TOP)/src/lib/libAleph.a 
+
+CLIENT_LIBS = $(TOP)/src/Binder/include/unshared/liblocator_client.a $(TOP)/src/Binder/include/unshared/libgenericServices.a $(TOP)/src/lib/libAleph.a
+
+CONTAINER_LIBS = $(TOP)/src/Binder/include/unshared/liblocator_client.a $(TOP)/src/Binder/include/unshared/libgenericServices.a $(TOP)/src/aleph/libipc.a $(TOP)/src/lib/libAleph.a 
+
+
+NormalLibraryObjectRule()
+
+NormalLibraryTarget(locator_client,$(OBJS_FOR_LOCATOR_CLIENT))
+InstallLibrary(locator_client,$(LIBALEPH))
+
+# NormalLibraryTarget(locator_deamon,$(OBJS_FOR_LOCATOR_DEAMON))
+# InstallLibrary(locator_deamon,$(LIBALEPH))
+
+NormalLibraryTarget(genericServices,$(OBJS_FOR_GENERIC_SERV))
+InstallLibrary(genericServices,$(LIBALEPH))
+
+AllTarget(locator_deamon)
+NormalProgramTarget(locator_deamon,locator_deamon.o $(OBJS_FOR_LOCATOR_DEAMON),$(LOCALLIBS),$(DEAMON_LIBS),$(SYSLIBS))
+
+AllTarget(client)
+NormalProgramTarget(client, client.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(client2)
+NormalProgramTarget(client2, client2.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(client_prof)
+NormalProgramTarget(client_prof, client_prof.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(client3)
+NormalProgramTarget(client3, client3.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(server)
+NormalProgramTarget(server, server.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(server_srcmig)
+NormalProgramTarget(server_srcmig, server_srcmig.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(server_tgtmig)
+NormalProgramTarget(server_tgtmig, server_tgtmig.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(ping_object)
+NormalProgramTarget(ping_object, ping_object.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(ping_n_objs)
+NormalProgramTarget(ping_n_objs, ping_n_objs.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(container)
+NormalProgramTarget(container, container.o,$(LOCALLIBS),$(CONTAINER_LIBS),$(SYSLIBS))
+
+AllTarget(graph-container)
+NormalProgramTarget(graph-container, graph-container.o,$(LOCALLIBS),$(CONTAINER_LIBS) $(GRAPH_LIB),$(SYSLIBS))
+
+#AllTarget(test_implicit)
+#NormalProgramTarget(test_implicit, test_implicit.o,$(LOCALLIBS),$(DEAMON_LIBS),$(SYSLIBS))
+
+AllTarget(implicit_find)
+NormalProgramTarget(implicit_find, implicit_find.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(weak_strong_find)
+NormalProgramTarget(weak_strong_find, weak_strong_find.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+DependTarget()

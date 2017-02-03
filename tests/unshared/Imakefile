@@ -1,0 +1,23 @@
+#OPTIONS=         -O3 -DWITHOUT_NANA -DMEM_DEBUG
+OPTIONS=         -O3 -D_REENTRANT -DMEM_DEBUG
+
+DEFINES= 	$(OPTIONS) -Wall -Wshadow -Wtraditional\
+		-Wmissing-prototypes -Wmissing-declarations -Wcast-align 
+
+# include "../srcDefs"
+
+LOCALLIBS=	$(TOP)/src/Binder/include/unshared/liblocator_deamon.a $(TOP)/src/Binder/include/unshared/libgenericServices.a $(TOP)/src/lib/libipc.a $(TOP)/src/lib/libAleph.a  
+
+SYSLIBS=	-lnana -lstdc++ -ldmallocth -lpthread -lc
+
+DEPLIBS= 	$(TOP)/src/lib/libAleph.a 
+
+IPC_CLIENT_LIB = $(TOP)/src/lib/libipc.a
+
+DEAMON_LIBS =	$(TOP)/src/Binder/include/unshared/liblocator_deamon.a $(TOP)/src/Binder/include/unshared/libgenericServices.a $(IPC_CLIENT_LIB) $(TOP)/src/lib/libAleph.a
+
+CLIENT_LIBS = $(TOP)/src/Binder/include/unshared/liblocator_client.a $(TOP)/src/Binder/include/unshared/libgenericServices.a $(TOP)/src/lib/libipc.a $(TOP)/src/lib/libAleph.a 
+
+
+# include "../tgtDefs"
+

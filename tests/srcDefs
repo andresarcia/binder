@@ -1,0 +1,28 @@
+INCLUDES= 	-I$(TOP)/src/Binder/include\
+		-I$(TOP)/src/aleph\
+		-I$(TOP)/src -I/usr/local/include\
+		-I$(TOP)/src/Binder/tests
+
+LIBALEPH=	$(TOP)/src/lib 
+
+OBJS=		testClient.o testServer.o testServer2.o testContainer.o \
+			testRemServer.o testRemClient.o containerClient.o \
+			containerServer.o new_containerClient.o new_containerServer.o\
+			testNewRemServer.o testNewRemClient.o my_hash_test.o
+
+SRCS=		testClient.C testServer.C testServer2.C testContainer.C \
+			testRemServer.C testRemClient.C containerClient.C  \
+			testNewRemServer.C testNewRemClient.C my_hash_test.C\
+			containerServer.C new_containerClient.C new_containerServer.C\
+			new_containerClientAsync.C new_containerServerAsync.C\
+			testCache.C new_containerClientAsync_plain.C\
+			new_containerServerAsync_forw.C\
+			new_containerClientAsync_forw.C\
+			testClientProf.C testNewRemClientProf.C\
+			testNewRemServerProf.C testServerProf.C
+
+CLIOBJS=	testClient.o 
+
+SRVOBJS=	testServer.o 
+
+

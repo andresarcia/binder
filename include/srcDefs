@@ -1,0 +1,45 @@
+INCLUDES= 	-I$(TOP)/src/binder/include\
+		-I$(TOP)/src/aleph\
+		-I$(TOP)/\
+		-I$(TOP)/groups/include\
+	 	-I/usr/local/lib/gtkmm/include\
+		-I/usr/include/gtk-1.2 -I/usr/include/glib-1.2\
+		-I/usr/lib/glib/include -I/usr/X11R6/include\
+		-I/usr/local/lib/sigc++-1.0/include\
+		-I/usr/local/include/sigc++-1.0
+
+LIBALEPH=	$(TOP)/aleph 
+
+OBJS_FOR_GENERIC_SERV =	safe_memory_alloc.o\
+			reception_point.o local_access_point.o\
+			local_reception_point.o\
+			local_readwrite.o local_binding.o access_point.o\
+			binding_point.o remote_reception_point.o\
+			remote_binding.o remote_access_point.o\
+
+OBJS_FOR_LOCATOR_DEAMON = locator_register_module.o\
+				locator_invocation_module.o\
+				locator_migration_module.o\
+				locator_location_module.o\
+				locator_boot.o locator_pars.o\
+				implicit_messages_module.o
+				
+
+OBJS_FOR_LOCATOR_CLIENT = locator_calls.o uid.o
+
+SRCS =		safe_memory_alloc.C reception_point.C local_access_point.C\
+		local_reception_point.C\
+		local_readwrite.C local_binding.C access_point.C\
+		locator_calls.C locator_deamon.C binding_point.C\
+		remote_reception_point.C remote_binding.C\
+		remote_access_point.C locator_boot.C locator_pars.C\
+		locator_register_module.C\
+		locator_invocation_module.C\
+		locator_migration_module.C\
+		locator_location_module.C\
+		implicit_messages_module.C\
+		client.C server.C client2.C client_prof.C client3.C\
+		server_srcmig.C server_tgtmig.C\
+		ping_object.C ping_n_objs.C\
+		container.C graph-container.C test_implicit.C implicit_find.C\
+		weak_strong_find.C test.C

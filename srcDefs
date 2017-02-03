@@ -1,0 +1,10 @@
+
+INCLUDES= 	-I$(TOP)/src/basic/include\
+  		-I$(TOP)/src/libaleph/include\
+		-I$(TOP)/src -I/usr/local/include
+
+LIBALEPH=	$(TOP)/src/lib
+
+SRCS=		testCache.C testClient.C testServer.C\
+
+

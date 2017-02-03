@@ -1,0 +1,48 @@
+
+AllTarget(testClient)
+NormalProgramTarget(testClient,testClient.o,$(LOCALLIBS) $(IPC_CLIENT_LIB), $(IPC_CLIENT_LIB) $(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(testClientProf)
+NormalProgramTarget(testClientProf,testClientProf.o,$(LOCALLIBS) $(IPC_CLIENT_LIB), $(IPC_CLIENT_LIB) $(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(testServer)
+NormalProgramTarget(testServer,testServer.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(testServerProf)
+NormalProgramTarget(testServerProf,testServerProf.o,$(LOCALLIBS),$(CLIENT_LIBS),$(SYSLIBS))
+
+AllTarget(testNewRemServer)
+NormalProgramTarget(testNewRemServer,testNewRemServer.o,$(LOCALLIBS),$(DEAMON_LIBS),$(SYSLIBS))
+
+AllTarget(testNewRemClient)
+NormalProgramTarget(testNewRemClient,testNewRemClient.o,$(LOCALLIBS),$(DEAMON_LIBS),$(SYSLIBS))
+
+AllTarget(testNewRemClientProf)
+NormalProgramTarget(testNewRemClientProf,testNewRemClientProf.o,$(LOCALLIBS),$(DEAMON_LIBS),$(SYSLIBS))
+
+AllTarget(testNewRemServerProf)
+NormalProgramTarget(testNewRemServerProf,testNewRemServerProf.o,$(LOCALLIBS),$(DEAMON_LIBS),$(SYSLIBS))
+
+AllTarget(new_containerClient)
+NormalProgramTarget(new_containerClient,new_containerClient.o,$(LOCALLIBS),$(CLIENT_LIBS), $(SYSLIBS))
+
+AllTarget(new_containerClientAsync_plain)
+NormalProgramTarget(new_containerClientAsync_plain,new_containerClientAsync_plain.o,$(LOCALLIBS),$(CLIENT_LIBS), $(SYSLIBS))
+
+AllTarget(new_containerServer)
+NormalProgramTarget(new_containerServer,new_containerServer.o,$(LOCALLIBS),$(CLIENT_LIBS), $(SYSLIBS))
+
+AllTarget(new_containerClientAsync)
+NormalProgramTarget(new_containerClientAsync,new_containerClientAsync.o,$(LOCALLIBS),$(CLIENT_LIBS), $(SYSLIBS))
+
+AllTarget(new_containerServerAsync)
+NormalProgramTarget(new_containerServerAsync,new_containerServerAsync.o,$(LOCALLIBS),$(CLIENT_LIBS), $(SYSLIBS))
+
+AllTarget(new_containerServerAsync_forw)
+NormalProgramTarget(new_containerServerAsync_forw,new_containerServerAsync_forw.o,$(LOCALLIBS),$(CLIENT_LIBS), $(SYSLIBS))
+
+AllTarget(new_containerClientAsync_forw)
+NormalProgramTarget(new_containerClientAsync_forw,new_containerClientAsync_forw.o,$(LOCALLIBS),$(CLIENT_LIBS), $(SYSLIBS))
+
+DependTarget()
+

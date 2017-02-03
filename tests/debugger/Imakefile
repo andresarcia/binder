@@ -1,0 +1,22 @@
+OPTIONS=        -g -DDEBUG -DMESSAGES -DWITH_NANA -O0
+
+DEFINES= 	$(OPTIONS) -Wall -Wshadow -Wtraditional\
+		-Wmissing-prototypes -Wmissing-declarations -Wcast-align 
+
+# include "../srcDefs"
+
+LOCALLIBS=	$(TOP)/src/Binder/include/debugger/liblocator_deamon_d.a $(TOP)/src/lib/libgservices_d.a $(TOP)/src/lib/libipc_d.a $(TOP)/src/lib/libAleph_d.a 
+
+SYSLIBS=	-lnana -lstdc++ -ldmallocth -lpthread -lc
+
+DEPLIBS= 	$(TOP)/src/lib/libAleph_d.a 
+
+IPC_CLIENT_LIB = $(TOP)/src/lib/libipc_d.a
+
+DEAMON_LIBS =	$(TOP)/src/Binder/include/debugger/liblocator_deamon_d.a $(TOP)/src/lib/libgservices_d.a $(IPC_CLIENT_LIB) $(TOP)/src/lib/libAleph_d.a
+
+CLIENT_LIBS = $(TOP)/src/Binder/include/debugger/liblocator_client_d.a $(TOP)/src/Binder/include/debugger/libgenericServices_d.a $(IPC_CLIENT_LIB) $(TOP)/src/lib/libAleph_d.a 
+
+
+# include "../tgtDefs"
+

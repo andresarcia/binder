@@ -1,0 +1,4 @@
+AllTarget(testCache)
+NormalProgramTarget(testCache,testCache.o,$(DEPLIBS),$(LOCALLIBS),$(SYSLIBS))
+DependTarget()
+
